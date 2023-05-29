@@ -15,4 +15,5 @@ in other OOP languages should easily be able to follow the discussion and code i
 
 ## Course Structure
 ### Section 1: Start
-- [] 1. Introduction
+- [x] 1. [Introduction](start/Introduction.md)
+- [ ] 2. [Types of Design Patterns](start/types.md)
