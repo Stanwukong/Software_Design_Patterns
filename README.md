@@ -1,5 +1,11 @@
 # Software Design Patterns: Best Practices for Software Developers
 
+## Technologies Used
+* JavaScript
+* Educative.io
+* Github docs
+* Github Co-Pilot
+
 ## Course Overview
 Being good at problem-solving is one thing but to take your career to the next level, 
 one must know how complex software projects are architected. Software design patterns 
