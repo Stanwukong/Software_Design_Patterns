@@ -28,11 +28,8 @@ explained by the seminal design patterns work done by the gang of four.
 
 ## Example
 ```
-public class Aircraft {
-
-    private String type;
-
-    public Aircraft(String type) {
+class Aircraft {
+    constructor(type) {
         this.type = type;
     }
 }
@@ -44,16 +41,8 @@ to add the color of the aircraft as a property, but you have already released a 
 original constructor. The solution is to add another constructor with two parameters like so
 
 ```
-public class Aircraft {
-
-    private String type;
-    private String color;
-
-    public Aircraft(String type) {
-        this.type = type;
-    }
-
-    public Aircraft(String type, String color) {
+class Aircraft {
+    constructor(type, color) {
         this.type = type;
         this.color = color;
     }
@@ -65,10 +54,10 @@ telescope:
 
 ```
 
-Aircraft(String type)
-Aircraft(String type, String color)
-Aircraft(String type, String color, String prop3)
-Aircraft(String type, String color, String prop3, String prop4)  
+const aircraft1 = new Aircraft('Type 1');
+const aircraft2 = new Aircraft('Type 2', 'Red');
+const aircraft3 = new Aircraft('Type 3', 'Blue', 'Manufacturer 3');
+const aircraft4 = new Aircraft('Type 4', 'Green', 'Manufacturer 4', 'Model 4');
   
 ```
 The telescoping pattern is called an anti-pattern: how NOT to do things! The way to approach a class with an increasing
