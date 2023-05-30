@@ -1,7 +1,7 @@
 # Software Design Patterns: Best Practices for Software Developers
 
 ## Technologies Used
-* JavaScript
+* TypeScript
 * Educative.io
 * Github docs
 * Github Co-Pilot
@@ -16,7 +16,7 @@ well-versed in knowledge of design patterns allows one to spot brittle and immat
 from miles away. The course goes to great lengths to lay bare the esoteric concepts of 
 various design patterns before the reader and is replete with real-world examples and sample code.
 The readership for this course is expected to be familiar with some object orientated language. 
-The course examples and snippets are written in the JavaScript language but folks with experience 
+The course examples and snippets are written in the TypeScript language but folks with experience 
 in other OOP languages should easily be able to follow the discussion and code intent.
 
 ## Course Structure

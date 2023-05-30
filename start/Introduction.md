@@ -29,7 +29,10 @@ explained by the seminal design patterns work done by the gang of four.
 ## Example
 ```
 class Aircraft {
-    constructor(type) {
+
+    type: string;
+
+    constructor(type: string) {
         this.type = type;
     }
 }
@@ -42,6 +45,10 @@ original constructor. The solution is to add another constructor with two parame
 
 ```
 class Aircraft {
+
+    type: string;
+    color: string;
+
     constructor(type, color) {
         this.type = type;
         this.color = color;

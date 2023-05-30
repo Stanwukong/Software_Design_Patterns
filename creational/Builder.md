@@ -53,26 +53,26 @@ a method for each component that can be part of the final product. These methods
 builders depending on if the builders will be including that part in the final product variant that they are responsible for
 building.
 
-```
+```typescript
 class AircraftBuilder {
 	
-	buildEngineer() {
+	buildEngineer(): void {
 
 	}
 
-	buildWings() {
+	buildWings(): void {
 
 	}
 
-	buildCockpit() {
+	buildCockpit(): void {
 
 	}
 
-	buildBathrooms() {
+	buildBathrooms(): void {
 
 	}
 
-	getResult() {
+	getResult(): void {
 
 	}
 }
@@ -80,12 +80,8 @@ class AircraftBuilder {
 
 Now we'll implement two concrete builders, one for F-16 and one for Boeing-747.
 
-```
-class Boeing747Builder extends AircraftBuilder {
-	constructor() {
-		super();
-		this.aircraft = new Boeing747();
-	}
+```typescript
+class F16Builder extends AircraftBuilder {
 
 	buildEngine() {
 		
@@ -105,27 +101,23 @@ class Boeing747Builder extends AircraftBuilder {
 }
 ```
 
-```
+```typescript
 class Boeing747Builder extends AircraftBuilder {
-	constructor() {
-		super();
-		this.aircraft = new Aircraft();
-	}
-
-	buildEngineer() {
-		this.aircraft.setEngineer('Boeing-747 Engineer');
+	
+	buildEngine() {
+		
 	}
 
 	buildWings() {
-		this.aircraft.setWings('Boeing-747 Wings');
+		
 	}
 
 	buildCockpit() {
-		this.aircraft.setCockpit('Boeing-747 Cockpit');
+	
 	}
 
 	buildBathrooms() {
-		this.aircraft.setBathrooms('Boeing-747 Bathrooms');
+		f16 = new F16();
 	}
 
 	getResult() {
@@ -133,4 +125,47 @@ class Boeing747Builder extends AircraftBuilder {
 	}
 }
 ```
+For brevity's sake, we have provided the skeleton of the builders and skipped individual implementation of each method. Note
+the **F16Builder** doesn't override the **buildBathrooms** method, since there are no bathrooms in the F-16 cockpit. The Boeing's
+builder does override the bathroom's method since a Boeing-747 has bathrooms for passengers.
+
+The process or algorithm required to construct the aircraft which in our case is the specific order in which the different
+parts are created is captured by another class called the **Director**. The director is in a sense **directing** the construction of the aircraft. The final product is still returned by the builders.
+
+```typescript
+class Director {
+	private aircraftBuilder: AircraftBuilder = new AircraftBuilder();
+
+	public Director (aircraftBuilder: AircraftBuilder) {
+		this.aircraftBuilder = aircraftBuilder;
+	}
+
+	public construct (isPassenger: boolean): void {
+		this.aircraftBuilder.buildCockpit();
+		this.aircraftBuilder.buildEngine();
+		this.aircraftBuilder.buildWings();
+
+		if (isPassenger) {
+			this.aircraftBuilder.buildBathrooms();
+		}
+	}
+}
+```
+
+Notice how we can pass in the builder of our choice, and vary the aircraft product (representation) to be either an F-16 or
+a Boeing-747. In our scenario, the builders return the same supertype however that may not be the case if the builders
+return products that aren't very similar.
+
+The client will consume the pattern like so:
+
+```typescript
+class Client {
+	public main(): void {
+		const f16Builder: F16Builder = new F16Builder();
+		const director: Director = new Director(f16Builder);
+
+		director.construct(false);
+		const f16: F16 = f16Builder.getResult();
+	}
+}
 ```
