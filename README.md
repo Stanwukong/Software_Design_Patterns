@@ -27,4 +27,5 @@ in other OOP languages should easily be able to follow the discussion and code i
 
 ### Section 2: Creational Patterns
 - [x] 3. [Builder Pattern](creational/Builder.md)
-- [ ] 4. [Singleton Pattern](creational/Singleton.md)
+- [x] 4. [Singleton Pattern](creational/Singleton.md)
+- [x] 5. [Prototype Pattern](creational/Prototype.md)
