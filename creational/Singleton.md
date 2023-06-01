@@ -32,7 +32,7 @@ Formally the Singleton pattern is defined as **_ensuring that only a single inst
 
 The class diagram consists of only a single entity
 
-![Singleton Class Diagram](public\images\singletonclassdiagram.jpg)
+![Singleton Class Diagram](/public/images/singletonclassdiagram.jpg)
 
 ## Example
 
