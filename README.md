@@ -2,6 +2,7 @@
 
 ## Technologies Used
 * TypeScript
+* TypeScript Handbook
 * Educative.io
 * Github docs
 * Github Co-Pilot
