@@ -11,7 +11,6 @@ This lesson discusses how the Singleton pattern enforces only a single instance 
 - Example
 - Multithreading and Singleton
 - Double-Checked Locking
-- Other Examples
 - Caveats
 
 </details>
@@ -114,7 +113,7 @@ class AirforceOne {
 
       if (AirforceOne.lock) {
         // Wait until lock is released
-        setTimeout(() =>{
+        setTimeout(() => {
           AirforceOne.getInstance().then(resolve).catch(reject)
         }, 100)
         return
@@ -137,5 +136,68 @@ class AirforceOne {
 }
 ```
 
-In this example `getInstance()` method returns a `Promise` that resolves with an 
-instance of `AirforceOne`. The method checks for an instance and if available returns it
+In this example `getInstance()` method returns a `Promise` that resolves with an
+instance of `AirforceOne`. The method checks for an instance and if available returns it.
+
+If an instance is not available, the method checks if the lock is set `(AirforceOne.lock)`. If the lock is set, it waits for a short duration (100ms in this example) and recursively calls `getInstance()` again. This ensures that the method is retried until the lock is released and an instance is available.
+
+When the lock is not set, the method sets the lock to prevent other invocations, simulates an asynchronous operation (e.g., using `setTimeout`), creates an instance of `AirforceOne`, releases the lock, and resolves the `Promise` with the created instance.
+
+Keep in mind that this is a simplified example.
+
+- The other is to undertake static initialization of the instance, which is guaranteed to be thread-safe.
+
+```TypeScript
+private static onlyInstance: AirforceOne = new AirforceOne();
+```
+
+The problem with the above approaches is that synchronization is expensive and static initialization creates the object even if it's not used in a particular run of the application. If the object creation is expensive then static intialization can cost us performance.
+
+## Double-Checked Locking
+
+The next evolution of our singleton pattern would be to synchronize only when the object is created for the first time and if its already created, then we don't attempt to synchronize the accessing threads. This pattern has a name called "double-checked locking".
+
+```typescript
+class AirforceOne {
+  private static onlyInstance: AirforceOne | null = null
+
+  private constructor() {
+    // Private constructor
+  }
+
+  public static getInstance(): Promise<AirforceOne> {
+    return new Promise<AirforceOne>((resolve, reject) => {
+      if (AirforceOne.onlyInstance) {
+        resolve(AirforceOne.onlyInstance)
+        return
+      }
+
+      // Simulating an asynchronous operation
+      setTimeout(() => {
+        if (!AirforceOne.onlyInstance) {
+          AirforceOne.onlyInstance = new AirforceOne()
+        }
+        resolve(AirforceOne.onlyInstance)
+      }, 0)
+    })
+  }
+
+  public fly() {
+    console.log("Airforce One is in the air.")
+  }
+}
+```
+
+In this example, the `getInstance()` method returns a `Promise` that resolves with an instance of `AirforceOne`. The method checks for an instance and if available returns it.
+
+If an instance is not available, the method simulates an asynchronous operation (e.g., using `setTimeout`) to create an instance of `AirforceOne`. It ensures that the instance creation is deferred and allows other parts of the program to continue execution.
+
+By using promises, you achieve a similar effect as double-checked locking by ensuring that only one instance of `AirforceOne` is created, even in the presence of concurrent requests for the instance.
+
+Keep in mind that this is a simplified example, and the actual implementation may vary depending on your specific requirements and the concurrency model you want to achieve.
+
+**NOTE: The double checked locking is now considered an antipattern and its utility has largely passed away as JVM startup times have sped up over the years.**
+
+
+## Caveats
+* Its possible to subclass a singleton class by making the constructor protected instead of private. It might be suitable under some circumstances. An approach taken in these scenarios is to create a register of singletons of the subclasses and the getInstance method can take in a parameter or use an environment variable to return the desired singleton. The registry maintains a mapping of string names to singleton objects.

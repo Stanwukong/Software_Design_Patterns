@@ -35,7 +35,22 @@ namespace Multithreading {
     }
 
     public fly() {
-      console.log("Airforce One is flying.")
+      console.log("Airforce One has taken off.")
     }
   }
+
+  class Client {
+    public async main() {
+      // Get the only instance of the aircraft
+      let airforceOne = await AirforceOne.getInstance()
+      airforceOne.fly()
+    }
+  }
+  
+  const test = () => {
+    const client = new Client()
+    client.main() // Airforce One has taken off.
+  }
+  
+  test();
 }
