@@ -61,7 +61,7 @@ interface IAircraft {
   // Properties and methods representing an aircraft
 }
 abstract class AircraftBuilder {
-  buildEngineer(): void {}
+  buildEngine(): void {}
 
   buildWings(): void {}
 
@@ -145,9 +145,9 @@ parts are created is captured by another class called the **Director**. The dire
 
 ```typescript
 class Director {
-  private aircraftBuilder: AircraftBuilder = new AircraftBuilder()
+  private aircraftBuilder: AircraftBuilder;
 
-  public Director(aircraftBuilder: AircraftBuilder) {
+  constructor(aircraftBuilder: AircraftBuilder) {
     this.aircraftBuilder = aircraftBuilder
   }
 
@@ -182,3 +182,43 @@ class Client {
 ```
 
 The **AircraftBuilder** interface hides how a given aircraft get built. The client is unaware of the classes **F16Engine, F16Cockpit** and similar cases for Boeing-747.
+
+## Skipping the Director
+You may find the builder pattern being used without the director. The client can directly instantiate the builder and invoke
+the required methods to get a product for itself. This is a common antidote for telescoping constructors. Imagine a class
+with too many attributes but some attributes are to be set optionally. In such a case the builder can be invoked to only set
+the required attributes and create a product.
+
+## Other Examples
+A manual implementation of the **StringBuilder** class pulled from Java is a good example of the builder pattern. 
+
+```typescript
+class StringBuilder {
+  private value: string
+
+  constructor(value: string) {
+    this.value = value
+  }
+
+  public append(text: string): StringBuilder {
+    this.value += text
+    return this
+  }
+
+  public toString(): string {
+    return this.value
+  }
+}
+```
+Usage
+```typescript
+const builder = new StringBuilder();
+builder.append("Hello").append(", ").append("world!");
+
+const result = builder.toString();
+console.log(result); // Hello, world!
+```
+
+## Caveats
+* The builder pattern might seem similar to the abstract factory pattern but one difference is that the builder pattern
+creates an object step by step whereas the abstract factory pattern returns the object in one go.

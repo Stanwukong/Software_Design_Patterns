@@ -25,4 +25,5 @@ in other OOP languages should easily be able to follow the discussion and code i
 - [x] 2. [Types of Design Patterns](start/Types.md)
 
 ### Section 2: Creational Patterns
-- [ ] 3. [Builder Pattern](creational/Builder.md)
+- [x] 3. [Builder Pattern](creational/Builder.md)
+- [ ] 4. [Singleton Pattern](creational/Singleton.md)
