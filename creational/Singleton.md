@@ -194,7 +194,7 @@ If an instance is not available, the method simulates an asynchronous operation 
 
 By using promises, you achieve a similar effect as double-checked locking by ensuring that only one instance of `AirforceOne` is created, even in the presence of concurrent requests for the instance.
 
-Keep in mind that this is a simplified example, and the actual implementation may vary depending on your specific requirements and the concurrency model you want to achieve.
+Keep in mind that this is a simplified example.
 
 **NOTE: The double checked locking is now considered an antipattern and its utility has largely passed away as JVM startup times have sped up over the years.**
 
