@@ -29,3 +29,37 @@ in other OOP languages should easily be able to follow the discussion and code i
 - [x] 3. [Builder Pattern](creational/Builder.md)
 - [x] 4. [Singleton Pattern](creational/Singleton.md)
 - [x] 5. [Prototype Pattern](creational/Prototype.md)
+- [ ] 6. [Factory Method Pattern](creational/Factory_Method.md)
+- [ ] 7. [Abstract Factory Pattern](creational/Abstract_Factory.md)
+
+### Section 3: Structural Patterns
+- [ ] 8. [Adapter Pattern](structural/Adapter.md)
+- [ ] 9. [Bridge Pattern](structural/Bridge.md)
+- [ ] 10. [Composite Pattern](structural/Composite.md)
+- [ ] 11. [Decorator Pattern](structural/Decorator.md)
+- [ ] 12. [Facade Pattern](structural/Facade.md)
+- [ ] 13. [Flyweight Pattern](structural/Flyweight.md)
+- [ ] 14. [Proxy Pattern](structural/Proxy.md)
+
+### Section 4: Behavioral Patterns
+- [ ] 15. [Chain of Responsibility Pattern](behavioral/Chain_of_Responsibility.md)
+- [ ] 16. [Observer Pattern](behavioral/Observer.md)
+- [ ] 17. [Strategy Pattern](behavioral/Strategy.md)
+- [ ] 18. [Command Pattern](behavioral/Command.md)
+- [ ] 19. [State Pattern](behavioral/State.md)
+- [ ] 20. [Template Method Pattern](behavioral/Template_Method.md)
+- [ ] 21. [Visitor Pattern](behavioral/Visitor.md)
+- [ ] 22. [Iterator Pattern](behavioral/Iterator.md)
+- [ ] 23. [Mediator Pattern](behavioral/Mediator.md)
+- [ ] 24. [Memento Pattern](behavioral/Memento.md)
+
+
+## References
+- [ ] 25. [Educative.io](https://www.educative.io/courses/software-design-patterns-best-practices)
+- [ ] 26. [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+- [ ] 27. [Github docs](https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax)
+- [ ] 28. [Github Co-Pilot](https://copilot.github.com/)
+
+
+## Authors
+- []. [Femi Ajanaku](https://www.github.com/stawukong)
