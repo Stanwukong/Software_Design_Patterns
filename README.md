@@ -62,4 +62,4 @@ in other OOP languages should easily be able to follow the discussion and code i
 
 
 ## Authors
-- []. [Femi Ajanaku](https://www.github.com/stawukong)
+- [Femi Ajanaku](https://www.github.com/stawukong)
